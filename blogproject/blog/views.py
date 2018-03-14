@@ -258,7 +258,7 @@ class PostDetailView(DetailView):
             'form': form,
             'comment_list': comment_list
         })
-        print(context)
+
         return context
 
 
@@ -318,7 +318,6 @@ def img(request):
     """
     img_list = Img.objects.all().order_by('-upload_time')
     tag_list = Tag.objects.all()
-    print(img_list)
     #
     # for i in img_list:
     #     print(i.img.url)

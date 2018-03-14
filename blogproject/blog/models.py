@@ -4,6 +4,7 @@ from django.urls import reverse
 import markdown
 from django.utils.html import strip_tags
 
+
 # Create your models here.
 
 class Category(models.Model):
@@ -45,8 +46,6 @@ class Post(models.Model):
 
     views = models.PositiveIntegerField(default=0)
 
-
-
     def __str__(self):
         return self.title
 
@@ -56,6 +55,9 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:article', kwargs={'pk': self.pk})
+
+    class Meta:
+        ordering = ['-created_time']
 
     def save(self, *args, **kwargs):
         # 如果没有填写摘要
@@ -80,7 +82,6 @@ class ChikenSoup(models.Model):
     reference = models.CharField(max_length=100)  # 出处
     created_time = models.DateField()  # 构建时间
 
-
     def __str__(self):
         return self.content
 
@@ -91,7 +92,7 @@ class Img(models.Model):
     """
     name = models.CharField(max_length=100)  # 图片名称
     img = models.ImageField(upload_to='img')  # 图片
-    description = models.TextField(blank=True) # 描述
+    description = models.TextField(blank=True)  # 描述
     upload_time = models.DateTimeField(blank=True)  # 上传时间
 
     def __str__(self):
