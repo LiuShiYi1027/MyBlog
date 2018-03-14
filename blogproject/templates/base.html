@@ -1,0 +1,117 @@
+{% load staticfiles %}
+{% load blog_tags %}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>LiuShiYi</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="{% static 'blog/images/icon.jpeg' %}">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="{% static 'blog/images/icon.jpeg' %}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="{% static 'blog/images/icon.jpeg' %}">
+    <meta name="msapplication-TileImage" content="images/icon.jpeg">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <link rel="stylesheet" href="{% static 'blog/assets/css/amazeui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/assets/css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/highlights/github.css' %}">
+</head>
+
+<body id="blog">
+
+<!-- nav start -->
+<nav class="am-g am-g-fixed blog-fixed blog-nav">
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button"
+            data-am-collapse="{target: '#blog-collapse'}"><span class="am-sr-only">导航切换</span> <span
+            class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="blog-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li><a href="{% url 'blog:homepage' %}">首页</a></li>
+            <li><a href="{% url 'blog:blog' %}">博客</a></li>
+            <li><a href="{% url 'blog:img' %}">图库</a></li>
+            <li><a href="{% url 'blog:timeline' %}">存档</a></li>
+        </ul>
+
+        <form class="am-topbar-form am-topbar-right am-form-inline" method="get" role="search" action="{% url 'blog:search' %}">
+            <div class="am-form-group">
+                <input type="search" name="q" class="am-form-field am-input-sm" placeholder="搜索"required>
+            </div>
+        </form>
+    </div>
+</nav>
+<hr>
+<!-- nav end -->
+
+
+<!-- content start -->
+{% block main %}
+{% endblock main %}
+<!-- content end -->
+
+<!-- footer start -->
+<footer class="blog-footer">
+    <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-footer-padding">
+
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <!--<h3>社交账号</h3>-->
+            <h3>Credits</h3>
+            <p>@LiuShiYi 追求卓越，无奈时间、经验、能力有限。刘十一的个人小站仍然有很多不足的地方，希望大家包容、不吝赐教，给@LiuShiYi 提意见、建议，助他不断成长。谢谢你，有你真好！</p>
+        </div>
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>Contact</h3>
+            <p>
+                <a href="http://shang.qq.com/email/stop/email_stop.html?qq=1181107503&sig=a1c657365db7e82805ea4b2351081fc3ebcde159f8ae49b1&tttt=1"
+                   target="_blank"><span class="am-icon-qq am-icon-fw am-primary blog-icon blog-icon"></span></a>
+                <a href="https://github.com/LiuShiYi1027" target="_blank"><span
+                        class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
+                <a href="https://weibo.com/u/1932058985" target="_blank"><span
+                        class="am-icon-weibo am-icon-fw blog-icon blog-icon"></span></a>
+                <a href="http://www.liushiyi.cn" target="_blank"><span
+                        class="am-icon-reddit am-icon-fw blog-icon blog-icon"></span></a>
+                {#                <a href="" target="_blank"><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>#}
+                <a class="social weixin" href="javascript:">
+                    <img src="{% static 'blog/images/MyWechat.png' %}" alt="微信二维码">
+                    <span class="am-icon-weixin am-icon-fw blog-icon"></span>
+                </a>
+            </p>
+        </div>
+        <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
+            <h3>About liushiyi.cn</h3>
+            <!--<p class="am-text-sm">-->
+            <p>
+                | 感谢@Amaze提供主题 |<br>
+                | 版权归@LiuShiYi所有 |<br>
+                | 使用 MIT 许可证发布 |<br>
+                | 托管于腾讯云主机|
+            </p>
+        </div>
+    </div>
+    <div class="blog-text-center">
+        © 2015 AllMobilize, Inc. Licensed under MIT license.
+    </div>
+</footer>
+
+<!-- end footer -->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="{% static 'blog/assets/js/jquery.min.js' %}"></script>
+<!--<![endif]-->
+
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="{% static 'blog/assets/js/amazeui.ie8polyfill.min.js' %}"></script>
+<![endif]-->
+
+<script src="{% static 'blog/assets/js/amazeui.min.js' %}"></script>
+</body>
+</html>
