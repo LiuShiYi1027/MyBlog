@@ -283,6 +283,104 @@ class TagView(ListView):
             'tag_list': Tag.objects.all()
         }
 
+# class ImgView(ListView):
+#     """
+#     图库视图
+#     """
+#     model = Post
+#     template_name = 'blog/img.html'
+#     context_object_name = 'img_list'
+#     paginate_by = 4
+#
+#     def get_context_data(self, **kwargs):
+#
+#         context = super().get_context_data(**kwargs)
+#         paginator = context.get('paginator')
+#         page = context.get('page_obj')
+#         is_paginated = context.get('is_paginated')
+#
+#         pagination_data = self.pagination_data(paginator, page, is_paginated)
+#         img_data = self.img_data()
+#         context.update(img_data)
+#         context.update(pagination_data)
+#
+#         print(context)
+#         return context
+#
+#     def img_data(self):
+#         return {
+#             'img_list': Img.objects.all().order_by("-upload_time")
+#         }
+#
+#
+#     def pagination_data(self, paginator, page, is_paginated):
+#         if not is_paginated:
+#             return {}
+#
+#         left = []
+#
+#         right = []
+#
+#         left_has_more = False
+#
+#         right_has_more = False
+#
+#         first = False
+#
+#         last = False
+#
+#         page_number = page.number
+#
+#         total_pages = paginator.num_pages
+#
+#         page_range = paginator.page_range
+#
+#         if page_number == 1:
+#
+#             right = page_range[page_number:page_number + 2]
+#
+#             if right[-1] < total_pages - 1:
+#                 right_has_more = True
+#
+#             if right[-1] < total_pages:
+#                 last = True
+#
+#         elif page_number == total_pages:
+#
+#             left = page_range[(page_number - 3) if (page_number - 3) > 0 else 0:page_number - 1]
+#
+#             if left[0] > 2:
+#                 left_has_more = True
+#
+#             if left[0] > 1:
+#                 first = True
+#         else:
+#             left = page_range[(page_number - 3) if (page_number - 3) > 0 else 0:page_number - 1]
+#             right = page_range[page_number:page_number + 2]
+#
+#             # 是否需要显示最后一页和最后一页前的省略号
+#             if right[-1] < total_pages - 1:
+#                 right_has_more = True
+#             if right[-1] < total_pages:
+#                 last = True
+#
+#             # 是否需要显示第 1 页和第 1 页后的省略号
+#             if left[0] > 2:
+#                 left_has_more = True
+#             if left[0] > 1:
+#                 first = True
+#
+#         data = {
+#             'left': left,
+#             'right': right,
+#             'left_has_more': left_has_more,
+#             'right_has_more': right_has_more,
+#             'first': first,
+#             'last': last,
+#         }
+#
+#         return data
+
 
 def homepage(request):
     """
@@ -318,9 +416,7 @@ def img(request):
     """
     img_list = Img.objects.all().order_by('-upload_time')
     tag_list = Tag.objects.all()
-    #
-    # for i in img_list:
-    #     print(i.img.url)
+
     return render(request, 'blog/img.html', context={'img_list': img_list, 'tag_list': tag_list})
 
 

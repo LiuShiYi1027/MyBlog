@@ -6,18 +6,30 @@
 
         <!-- 图片库 -->
         <div class="am-u-md-8 am-u-sm-12">
-
             <figure data-am-widget="figure" class="am am-figure am-figure-default "
                     data-am-figure="{ pureview: 'true' }">
-                <div id="container">
-                    {% for img in img_list %}
-                        <div><img src="{{ img.img.url }}">
-                            <h3>{{ img.name }}</h3></div>
-                    {% endfor %}
+                <div class="am-g am-g-fixed" id="container">
+                    <table>
+                        {% for img in img_list %}
+                            <tr>
+
+                                <td style="width: 300px">
+                                    <img style="width: 300px" src="{{ img.img.url }}" alt="">&nbsp;
+                                </td>
+                                <td style="width: 300px">
+                                    <h1 align="center">&nbsp;&nbsp;{{ img.name }}&nbsp;&nbsp;</h1>
+                                    <p align="center" class="blog-color">
+                                        &nbsp;&nbsp;@ {{ img.author }} {{ img.upload_time|date:"Y-m-d" }}&nbsp;&nbsp;</p>
+                                    <p align="center"> &nbsp;&nbsp; {{ img.params }} &nbsp;&nbsp; </p>
+                                    <p align="center">&nbsp;&nbsp;{{ img.description }}&nbsp;&nbsp;</p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+
                 </div>
             </figure>
-
-
         </div>
 
         <!-- 侧边栏 -->

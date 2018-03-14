@@ -92,6 +92,8 @@ class Img(models.Model):
     """
     name = models.CharField(max_length=100)  # 图片名称
     img = models.ImageField(upload_to='img')  # 图片
+    author = models.CharField(max_length=20) # 图片作者
+    params = models.TextField(blank=True) # 参数
     description = models.TextField(blank=True)  # 描述
     upload_time = models.DateTimeField(blank=True)  # 上传时间
 

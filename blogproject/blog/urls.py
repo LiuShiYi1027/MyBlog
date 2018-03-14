@@ -14,6 +14,7 @@ urlpatterns = [
                   url(r'homepage/', views.homepage),
                   url(r'^blog/', views.BlogView.as_view(), name='blog'),  # 博客视图
                   url(r'^img/', views.img, name='img'),  # 图库视图
+                  # url(r'^img/', views.ImgView.as_view(), name='img'),
                   url(r'^timeline', views.timeline, name='timeline'),  # 时间轴
                   url(r'^post/(?P<pk>[0-9]+)/$', views.PostDetailView.as_view(), name='article'),  # 文章详情
                   url(r'^category/(?P<pk>[0-9]+)/$', views.CategoryView.as_view(), name='category'),
