@@ -44,7 +44,7 @@ nbformat==4.4.0
 ndg-httpsclient==0.4.3
 notebook==5.2.1
 pandocfilters==1.4.2
-paramiko==2.4.0
+paramiko==2.10.1
 parsel==1.2.0
 parso==0.1.0
 pexpect==4.3.0
